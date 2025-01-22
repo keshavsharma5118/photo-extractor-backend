@@ -14,7 +14,7 @@ app.use(cors({ origin: "https://photo-extractor.vercel.app", credentials: true }
 app.use(express.json());
 app.use(
   session({
-    secret: "your_secret_key",
+    secret: "keshavsharma",
     resave: false,
     saveUninitialized: true,
   })
@@ -28,7 +28,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:5000/auth/google/callback",
+      callbackURL: "https://photo-extractor-production.up.railway.app/auth/google/callback",
     },
     (accessToken, refreshToken, profile, done) => {
       return done(null, profile);
