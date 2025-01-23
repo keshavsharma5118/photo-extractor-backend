@@ -28,16 +28,13 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.GOOGLE_CALLBACK_URL, // Use callback URL from environment variables
+      callbackURL: "https://photo-extractor-production.up.railway.app/auth/google/callback",
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log("Access Token:", accessToken);
-      console.log("Profile:", profile);
       return done(null, profile);
     }
   )
 );
-
 
 passport.serializeUser((user, done) => {
   done(null, user);
