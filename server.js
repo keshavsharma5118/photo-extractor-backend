@@ -28,19 +28,16 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://photo-extractor-production.up.railway.app/auth/google/callback",
+      callbackURL: process.env.GOOGLE_CALLBACK_URL, // Use callback URL from environment variables
     },
     (accessToken, refreshToken, profile, done) => {
-      if (accessToken && refreshToken) {
-        console.log("Google Access Token:", accessToken);
-        console.log("Google Profile:", profile);
-      } else {
-        console.error("Error: Access Token or Refresh Token not received");
-      }
+      console.log("Access Token:", accessToken);
+      console.log("Profile:", profile);
       return done(null, profile);
     }
   )
 );
+
 
 passport.serializeUser((user, done) => {
   done(null, user);
