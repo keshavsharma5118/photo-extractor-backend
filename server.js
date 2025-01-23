@@ -31,6 +31,12 @@ passport.use(
       callbackURL: "https://photo-extractor-production.up.railway.app/auth/google/callback",
     },
     (accessToken, refreshToken, profile, done) => {
+      if (accessToken && refreshToken) {
+        console.log("Google Access Token:", accessToken);
+        console.log("Google Profile:", profile);
+      } else {
+        console.error("Error: Access Token or Refresh Token not received");
+      }
       return done(null, profile);
     }
   )
